@@ -1,10 +1,21 @@
 #include "Complexe.h"
 #include <cmath>
 
+Complexe::Complexe()
+{
+}
+
+
 Complexe::Complexe(double re, double img)
 {
 	this->Re = re;
 	this->Img = img;
+}
+
+Complexe::Complexe(const Complexe& c)
+{
+	this->Re = c.Re;
+	this->Img = c.Img;
 }
 
 void Complexe::affichage() const
@@ -22,6 +33,20 @@ Complexe Complexe::conjugue() const
 {
 	return Complexe(this->Re, -this->Img);
 }
+
+Complexe& Complexe::operator*()
+{
+	std::cout << "Entrée à operator *  : " << endl;
+	return *this; // Retourne une référence à l'objet courant
+}
+
+Complexe& Complexe::operator=(const Complexe& C)
+{
+	this->Re = C.Re;
+	this->Img = C.Img;
+	return *this;
+}
+
 
 Complexe Complexe::operator+(const Complexe& comp) const
 {
